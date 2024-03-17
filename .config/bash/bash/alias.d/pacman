@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-alias list-installed="pacman -Qqett"
-
