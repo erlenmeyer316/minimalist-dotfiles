@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
 alias list-installed="pacman -Qqett"
+alias orphans="pacman -Qtdq"
+alias delete-orphans="sudo pacman -Rns $(orphans)"
 
