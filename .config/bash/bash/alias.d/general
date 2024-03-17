@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# LOCATION
+
+alias dotfiles="nvim $XDG_CONFIG_HOME"
+alias config="cd $XDG_CONFIG_HOME"
+alias home="cd $HOME"
+
+# BASH COMMANDS
+
+alias ls='ls -al --color=auto'
+alias grep='grep --color=auto'
+alias mkdir='mkdir -p'

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+alias web='w3m'
+alias elinks='w3m'

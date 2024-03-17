@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+if [ $(command -v "fzf") ]; then
+    source /usr/share/fzf/completion.bash
+    source /usr/share/fzf/key-bindings.bash
+fi
