@@ -1,13 +1,13 @@
 tabstop 8
 indent_incr 4
-pixel_per_char 16
-pixel_per_line 19
+pixel_per_char 8
+pixel_per_line 16
 frame 0
 target_self 0
 open_tab_blank 0
 open_tab_dl_list 0
 display_link 0
-display_link_number 0
+display_link_number 1
 decode_url 0
 display_lineinfo 0
 ext_dirlist 1
@@ -25,7 +25,7 @@ ignore_null_img_alt 1
 view_unseenobject 0
 display_image 1
 pseudo_inlines 1
-auto_image 1
+auto_image 0
 max_load_image 4
 ext_image_viewer 1
 image_scale 100
@@ -38,7 +38,7 @@ show_srch_str 1
 label_topline 0
 nextpage_topline 0
 color 1
-high-intensity 0
+high-intensity 1
 basic_color terminal
 anchor_color blue
 image_color green
