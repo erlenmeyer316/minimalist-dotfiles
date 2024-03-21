@@ -11,6 +11,9 @@ widget_interpolation=(
   "\#{current_date_bg}"
   "\#{current_date_fg}"
   "\#{current_date}"
+  "\#{current_volume_bg}"
+  "\#{current_volume_fg}"
+  "\#{current_volume}"
 )
 widget_commands=(
   "#($CURRENT_DIR/scripts/current_time_bg.sh)"
@@ -19,6 +22,9 @@ widget_commands=(
   "#($CURRENT_DIR/scripts/current_date_bg.sh)"
   "#($CURRENT_DIR/scripts/current_date_fg.sh)"
   "#($CURRENT_DIR/scripts/current_date.sh)"
+  "#($CURRENT_DIR/scripts/current_volume_bg.sh)"
+  "#($CURRENT_DIR/scripts/current_volume_fg.sh)"
+  "#($CURRENT_DIR/scripts/current_volume.sh)"
 )
 
 set_tmux_option() {
