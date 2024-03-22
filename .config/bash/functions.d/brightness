@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+
+bright_cur(){
+    brightnessctl -m | cut -d, -f4 | tr -d %
+}
+
+bright_up(){
+    cur=$(bright_cur)
+    new=($cur + 5)
+    if [ "$new" -le 100 ]; then
+    	brightnessctl -q set 5%+
+    fi
+}
+
+bright_down(){
+    cur=$(bright_cur) 
+    new=($cur - 5)
+   if [ "$new" -gt 5 ]; then
+   	brightnessctl -q set 5%-
+   fi
+}
