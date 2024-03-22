@@ -14,6 +14,7 @@ widget_interpolation=(
   "\#{current_volume_bg}"
   "\#{current_volume_fg}"
   "\#{current_volume}"
+  "\#{current_brightness}"
 )
 widget_commands=(
   "#($CURRENT_DIR/scripts/current_time_bg.sh)"
@@ -25,6 +26,7 @@ widget_commands=(
   "#($CURRENT_DIR/scripts/current_volume_bg.sh)"
   "#($CURRENT_DIR/scripts/current_volume_fg.sh)"
   "#($CURRENT_DIR/scripts/current_volume.sh)"
+  "#($CURRENT_DIR/scripts/current_brightness.sh)"
 )
 
 set_tmux_option() {

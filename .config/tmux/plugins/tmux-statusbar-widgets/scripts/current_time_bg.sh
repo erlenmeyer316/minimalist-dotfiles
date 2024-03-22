@@ -21,4 +21,4 @@ main() {
   get_bg_color_settings
   print_bg_color
 }
-main
+main "$@"
