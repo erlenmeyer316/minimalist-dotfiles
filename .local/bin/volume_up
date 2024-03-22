@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+
+vol_cur(){
+    pamixer --get-volume
+}
+
+
+cur=$(vol_cur) 
+new=($cur + 1)
+if [ "$new" -lt 100 ]; then
+   pamixer -i 1
+fi
