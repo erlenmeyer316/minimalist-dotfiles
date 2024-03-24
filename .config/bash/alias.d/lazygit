@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
 alias lz="lazygit"
+alias dotslz="(cd ~/dotfiles ; lazygit)"
