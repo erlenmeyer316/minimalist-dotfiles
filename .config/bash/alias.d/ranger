@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-alias fm="ranger"
-alias files="ranger"
-alias r="ranger"
-alias cdd="ranger"
+alias fm="ranger_cd"
+alias files="ranger_cd"
+alias r="ranger_cd"
+alias cdd="ranger_cd"
+alias ranger="ranger"

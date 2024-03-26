@@ -9,7 +9,7 @@ if [ -f "$XDG_CONFIG_HOME/user-dirs.dirs" ]; then
     source "$XDG_CONFIG_HOME/user-dirs.dirs"
 fi
 
-export EDITOR=nvim
-export VISUAL=nvim
-
+export EDITOR='nvim'
+export VISUAL='nvim'
+export PAGER='less'
 
