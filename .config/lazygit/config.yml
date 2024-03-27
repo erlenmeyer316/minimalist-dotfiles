@@ -1,0 +1,38 @@
+customCommands:
+  - key: "D"
+    command: "git push --delete {{ .SelectedRemote.Name }} {{ .SelectedTag.FullRefName }}"
+    context: "tags"
+    stream: true
+    prompts:
+      - type: "confirm"
+        title: "Confirm:"
+        body: "Are you sure you want to delete the tag {{ .SelectedTag }} on {{ .SelectedRemote.Name }}?"
+  - key: "f"
+    command: "git difftool -y {{.SelectedLocalCommit.Sha}} -- {{.SelectedCommitFile.Name}}"
+    context: "commitFiles"
+    description: "Compare (difftool) with local copy"
+  - key: "M"
+    command: "git mergetool {{ .SelectedFile.Name }}"
+    context: "files"
+    loadingText: "opening git mergetool"
+    subprocess: true
+  - key: "<c-p>"
+    command: "git remote prune {{.SelectedRemote.Name}}"
+    context: "remotes"
+    loadingText: "Pruning..."
+    description: "prune deleted remote branches"
+  - key: "b"
+    command: "git branch --merged candidate | grep -v '^[ *]*master$' | xargs git branch -d"
+    context: "localBranches"
+    loadingText: "Pruning..."
+    description: "prune local branches that have been merged to candidate"
+  - key: t
+    command: tig {{.SelectedSubCommit.Sha}} -- {{.SelectedCommitFile.Name}}
+    context: commitFiles
+    description: tig file (history of commits affecting file)
+    subprocess: yes
+  - key: t
+    command: tig -- {{.SelectedFile.Name}}
+    context: files
+    description: tig file (history of commits affecting file)
+    subprocess: yes
