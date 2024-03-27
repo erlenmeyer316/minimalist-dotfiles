@@ -1,0 +1,24 @@
+[general]
+# Folder where vdirsyncer can store some metadata about each pair.
+status_path = "~/.cache/vdirsyncer/status/"
+
+# CardDAV
+[pair my_contacts]
+a = "my_contacts_local"
+b = "my_contacts_remote"
+collections = ["from a", "from b"]
+
+# metadata = ["displayname"]
+
+[storage my_contacts_local]
+# Storage references actual data on a remote server or on the local disk.
+type = "filesystem"
+path = "~/.local/contacts/adam.dickison@posteo.net"
+fileext = ".vcf"
+
+[storage my_contacts_remote]
+type = "carddav"
+url = "https://posteo.de:8443"
+username = "adam.dickison@posteo.net"
+password.fetch = ["command", "pass", "email/posteo/adam.dickison@posteo.net"]
+read_only = true
