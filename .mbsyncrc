@@ -11,8 +11,8 @@ CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 MaildirStore posteo-local
 Subfolders Verbatim
-Path ~/.local/share/mail/adam.dickison@posteo.net/
-Inbox ~/.local/share/mail/adam.dickison@posteo.net/INBOX
+Path ~/.local/mail/adam.dickison@posteo.net/
+Inbox ~/.local/mail/adam.dickison@posteo.net/INBOX
 
 Channel posteo
 Expunge Both
