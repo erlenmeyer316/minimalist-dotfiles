@@ -1,0 +1,12 @@
+account adam.dickison@posteo.net
+host posteo.de
+port 465
+from adam.dickison@posteo.net
+user adam.dickison@posteo.net
+passwordeval "pass adam.dickison@posteo.net"
+auth on
+tls on
+tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+logfile /home/erlenmeyer316/.config/msmtp/msmtp.log
+tls_starttls off
+
