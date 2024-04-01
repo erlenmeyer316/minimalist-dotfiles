@@ -1,27 +1,36 @@
 ## Neomutt configuration file located at ~/.config/neomutt/neomuttrc
 set from='adam.dickison@posteo.net'
-set realname='First Last'
+set realname='Adam M. Dickison'
 set sendmail = "/usr/bin/msmtp -a posteo"
 set sendmail_wait = 0
 unset record
 
+# File where headers will be cached
 set header_cache='~/.cache/neomutt/headers'
+# File where bodies will be cached
 set message_cachedir='~/.cache/neomutt/bodies'
 set certificate_file='~/.cache/neomutt/certificates'
 
-# My mailboxes
-set folder ='~/.local/mail/posteo'
+# Folder with emails
+set folder ='~/.local/mail/adam.dickison@posteo.net'
+# Type of mailbox
+set mbox_type = Maildir
+# Directory to poll for new mail
 set spoolfile='+INBOX'
+# Set the drafts folder
 set postponed='+Drafts'
+# Directory to save sent messages into
 set record='+Sent'
+# Set the trash folder
 set trash='+Trash'
-mailboxes =INBOX =Archive =Sent =Trash =Drafts =Junk ='Mailing List' =Notes =Queue
+
+mailboxes =INBOX =Archive =Dickiserver =Drafts =Financial ='Financial/Chase Bank' ='Financial/Daniel Wrenne' =Financial/Misc ='Financial/PNC Bank' =Financial/Taxes =Junk =Newsletters ='Newsletters/Ana White' =Newsletters/Bandcamp ='Newsletters/Canal Winchester Schools' ='Newsletters/Deku Deals' =Newsletters/dotfiles ='Newsletters/Exception Not Found' =Newsletters/Instructables =Newsletters/Kindle ='Newsletters/Kreg Tools' ='Newsletters/Linux Opsys' =Newsletters/Osteel =Newsletters/Simpleshot ='Newsletters/Tech Osteel' ='Newsletters/The Valuable Dev' ='Newsletters/Until Gone' =Orders =Sent =Trash =Unsorted ='Unsorted/Notes From Myself' =Unsorted/Reference =Vacation
 
 # Personal preferences
 set date_format="%y/%m/%d %I:%M%p"
-set editor='nvim'
+set editor="nvim + ':set textwidth=0'"
 set sort=threads
-set sort='reverse-date'
+set sort_aux='reverse-last-date-received'
 set forward_format = "Fwd: %s"
 set include
 
@@ -51,6 +60,7 @@ bind index,pager B sidebar-toggle-visible
 
 # HTML settings
 set mailcap_path = ~/.config/neomutt/mailcap
+auto_view text/html
 alternative_order text/plain text/enriched text/html
 macro attach 'V' "<pipe-entry>iconv -c --to-code=UTF-8 > ~/.cache/neomutt/neomail.html<enter><shell-escape>$BROWSER ~/.cache/neomutt/neomail.html<enter>"
 
