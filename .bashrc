@@ -33,14 +33,16 @@ for file in ~/.config/bash/functions.d/* ; do
 done
 
 
+clear
+
 #source $XDG_CONFIG_HOME/bash/theme.d/dracula
 #source $XDG_CONFIG_HOME/bash/prompt.d/prompt
 
 
 # Start tmux
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  #exec tmux
-  :
-fi
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#exec tmux
+#  :
+#fi
 
 
