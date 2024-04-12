@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+#
+#
+
+if ! command -v brightnessctl &> /dev/null
+then
+	echo "brightnessctl could not be found"
+	exit 1
+fi
+
+bright_cur(){
+    brightnessctl -m | cut -d, -f4 | tr -d %
+}
+
+
+cur=$(bright_cur) 
+new=($cur - 1)
+if [ "$new" -gt 1 ]; then
+   brightnessctl -q set 1%-
+fi

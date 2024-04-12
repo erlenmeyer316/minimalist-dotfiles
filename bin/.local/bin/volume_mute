@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+
+
+if ! command -v pamixer &> /dev/null
+then
+	echo "pamixer could not be found"
+	exit 1
+fi
+
+pamixer -t
