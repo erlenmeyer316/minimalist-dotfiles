@@ -1,0 +1,3 @@
+[submodule "__setup/ArchLinux/yay"]
+	path = __setup/ArchLinux/yay
+	url = https://aur.archlinux.org/yay.git

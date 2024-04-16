@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Checking for orphaned packages...
+Depends = pacman
+When = PostTransaction
+Exec = /bin/sh -c 'pacman -Qtd || echo "No orphans found."'
