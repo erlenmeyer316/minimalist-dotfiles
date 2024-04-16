@@ -7,7 +7,6 @@ bashtop
 bluez-deprecated-tools
 bluez-utils
 brightnessctl
-caprine
 cronie
 dmenu
 efibootmgr
@@ -36,7 +35,6 @@ man-db
 man-pages
 mpv
 msmtp
-nano
 ncdu
 neofetch
 neomutt
