@@ -8,5 +8,5 @@ Target = *
 
 [Action]
 Description = Create a backup list of all installed packages
-When = PreTransaction
-Exec = /bin/sh -c 'pacman -Qqen > "/home/erlenmeyer316/.config/pacman/package_lists/pacman.pkglist"; pacman -Qqem > "/home/erlenmeyer316/.config/pacman/package_lists/yay.pkglist" 2> /dev/null; exit'
+When = PostTransaction
+Exec = /bin/sh -c 'rm /home/erlenmeyer316/.config/pacman/package_lists/pacman.pkglist; rm /home/erlenmeyer316/.config/pacman/package_lists/yay.pkglist; pacman -Qqen > "/home/erlenmeyer316/.config/pacman/package_lists/pacman.pkglist"; pacman -Qqem > "/home/erlenmeyer316/.config/pacman/package_lists/yay.pkglist" 2> /dev/null; exit'
