@@ -2,15 +2,15 @@
 
 # Include custom pacman configuration
 PAC_BAK=$HOME/.config/pacman/pacman.conf.orig
+
 if [ ! -f "$PAC_BAK" ]; then
    echo "Backing up /etc/pacman.conf..."
    sudo cp /etc/pacman.conf $PAC_BAK
+
    echo "Linking custom pacman config..."
    PAC_CONF=$HOME/.config/pacman/pacman.conf
    echo "Include = $PAC_CONF" | sudo tee -a /etc/pacman.conf
 fi
-#sudo sh -c 'echo "Include = ${PAC_CONF}"' >> /etc/pacman.conf
-#sudo echo -e "Include = ${PAC_CONF}" >> /etc/pacman.conf
 
 # Install official packages from list
 echo "Installing official packages..."

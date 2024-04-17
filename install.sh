@@ -1,64 +1,119 @@
 #!/usr/bin/env bash
 
-# make sure we have pulled in and updated any submodules
-git submodule init
-git submodule update
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 
-# installable for all users 
+# run the stow command for the passt in app config ($2) in the target directory ($1)
+stow_package() {
+	tgt=$1
+	app=$2
+	# -v verbose
+	# -R recursive
+	# -t target
+    	cd $SCRIPT_DIR
+	stow -v -R -t ${tgt} ${app}
+}
+
+# base packages  
 base=(
 	bash
-	bashtop
-	espanso
-	i3
-	lazygit
 	neofetch
 	ranger
-	sketchybar
-	skhd
 	tmux
 	w3m
 	wttr
-	yabai
+	bashtop
+	lazygit
 	bin
+	i3
+	espanso
 )
 
-# installable only for local user
-useronly=(
+user_only=(
 	git
 	isync
-	khard
+	kard
 	msmtp
 	neomutt
 	ssh
 	vdirsyncer
 )
 
-# run the stow command for the passt in app config ($2) in the target directory ($1)
-stowit() {
-	tgt=$1
-	app=$2
-	# -v verbose
-	# -R recursive
-	# -t target
-	stow -v -R -t ${tgt} ${app}
-}
-echo ""
-echo "Stowing apps for user: ${whoami}"
+# macos specific packages
+darwin_only=(
+	skhd
+	sketchybar
+	yabai
+)
+
+# arch linux specific packages
+archlinux_only=(
+	pacman
+)
+
+
+# pull and update any submodules
+git submodule init
+git submodule update
+
+# gather os and version information
+if [ -f /etc/os-release ]; then
+	# freedesktop.org and systemd
+	. /etc/os-release
+	OS=$NAME
+	VER=$VERSION_ID
+elif type lsb_release >/dev/null 2>&1; then
+	# linuxbase.org
+	OS=$(lsb_release -si)
+	VER=$(lsb_release -sr)
+elif [ -f /etc/lsb-release ]; then
+	# for some versions of Debian/Ubuntu without lsb_release command
+	. /etc/lsb-release
+	OS=$DISTRIB_ID
+	VER=$DISTRIB_RELEASE
+elif [ -f /etc/debian_version ]; then
+	# Old Debian/Ubuntu/etc.
+	OS=Debian
+	VER=$(cat /etc/debian_version)
+else
+	# Fallback to uname
+	OS=$(uname -s)
+	VER=$(uname -r)
+fi
+
+# gather system architecture
+ARCH=$(uname -m)
+
+# determine setup path based on os information
+SETUP_SCRIPT_FOLDER=$(echo "./__setup/${OS// /}")
+
+
+# pull and update any submodules
+git submodule init
+git submodule update
+
+
+if [ "$OS" == "Arch Linux" ]; then
+    # install arch only configuration
+    for app in ${archlinux_only[@]}; do
+       stow_package "${HOME}" "$app"
+    done
+
+    # run setup script
+    cd $SETUP_SCRIPT_FOLDER
+    ./setup_${ARCH}.sh
+fi
 
 # install base config
 for app in ${base[@]}; do
-	stowit "${HOME}" $app
+	stow_package "${HOME}" $app
 done
 
 
 # install local user config
-for app in ${useronly[@]}; do
+for app in ${user_only[@]}; do
 	if [[ "$(whoami)" != *"root"* ]]; then
-		stowit "${HOME}" $app
-	else
-		echo "$(whoami)"
+	    stow_package "${HOME}" $app
 	fi
 done
 
-echo ""
-echo "#### Finished"
+echo "#### Done!"
