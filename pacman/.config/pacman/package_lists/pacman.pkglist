@@ -48,6 +48,7 @@ npm
 numlockx
 openssh
 pamixer
+pass-otp
 pipewire
 pipewire-alsa
 pipewire-jack
@@ -126,4 +127,6 @@ xorg-xwininfo
 xorg-xwud
 xsel
 zathura-pdf-mupdf
+zbar
+zip
 zram-generator
