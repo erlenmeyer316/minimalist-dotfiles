@@ -2,7 +2,7 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 
-# run the stow command for the passt in app config ($2) in the target directory ($1)
+# run the stow command for the package in app config ($2) in the target directory ($1)
 stow_package() {
 	tgt=$1
 	app=$2
@@ -40,6 +40,7 @@ user_only=(
 
 # macos specific packages
 darwin_only=(
+        homebrew
 	skhd
 	sketchybar
 	yabai
@@ -50,10 +51,6 @@ archlinux_only=(
 	pacman
 )
 
-
-# pull and update any submodules
-git submodule init
-git submodule update
 
 # gather os and version information
 if [ -f /etc/os-release ]; then
@@ -103,6 +100,30 @@ if [ "$OS" == "Arch Linux" ]; then
     ./setup_${ARCH}.sh
 fi
 
+if [ "$OS" == "Darwin" ]; then
+   # create folder structure
+   [[ ! -d $HOME/.config ]] && mkdir $HOME/.config
+
+   # configure stow
+   if [ ! -f $HOME/.stow-global-ignore ]; then
+       echo "\.DS_Store" > $HOME/.stow-global-ignore
+   else
+       if [ -z $(grep "\.DS_Store" "$HOME/.stow-global-ignore") ]; then 
+           echo "\.DS_Store" > $HOME/.stow-global-ignore; 
+       fi
+   fi
+
+   # install Mac only configuration
+   for app in ${darwin_only[@]}; do
+       stow_package "${HOME}" "$app"
+   done
+
+   # run setup script
+   cd $SETUP_SCRIPT_FOLDER
+   ./setup_${ARCH}.sh
+fi
+
+
 # install base config
 for app in ${base[@]}; do
 	stow_package "${HOME}" $app
@@ -115,5 +136,7 @@ for app in ${user_only[@]}; do
 	    stow_package "${HOME}" $app
 	fi
 done
+
+[[ -f $SETUP_SCRIPT_FOLDER/post_${ARCH}.sh ]] && cd $SETUP_SCRIPT_FOLDER && ./post_${ARCH}.sh
 
 echo "#### Done!"

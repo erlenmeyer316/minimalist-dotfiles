@@ -27,3 +27,5 @@ echo "Installing AUR packages..."
 AUR_PACKAGES=$HOME/.config/pacman/package_lists/yay.pkglist 
 yay -S --needed --noconfirm - < $AUR_PACKAGES
 
+
+
