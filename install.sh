@@ -15,16 +15,15 @@ stow_package() {
 
 # base packages  
 base=(
-	bash
+	shell
 	neofetch
 	ranger
 	tmux
 	w3m
-	wttr
-	bashtop
+	btop
+	kitty
 	lazygit
 	bin
-	i3
 	espanso
 )
 
@@ -49,6 +48,8 @@ darwin_only=(
 # arch linux specific packages
 archlinux_only=(
 	pacman
+	wttr
+	i3
 )
 
 
