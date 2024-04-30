@@ -1,0 +1,33 @@
+#
+# ~/.sharedrc
+#
+
+# If not running interactively, don't do anything
+#[[ $- != *i* ]] && return
+
+# Environment Variables
+for file in ~/.config/shell/shared/env.d/* ; do
+   if [ -f "$file" ] ; then
+	echo "$file"
+	source "$file"
+   fi
+done
+
+# Path
+source ~/.config/shell/shared/path
+
+# Aliases
+for file in ~/.config/shell/shared/alias.d/* ; do
+   if [ -f "$file" ] ; then
+	echo "$file"
+	source "$file"
+   fi
+done
+
+# Functions
+for file in ~/.config/shell/shared/function.d/* ; do
+   if [ -f "$file" ] ; then
+	echo "$file"
+	source "$file"
+   fi
+done
