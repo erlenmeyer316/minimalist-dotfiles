@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-alias web='w3m'
-alias elinks='w3m'
+if command -v w3m > /dev/null 2>&1; then
+   alias web='w3m'
+   alias elinks='w3m'
+fi

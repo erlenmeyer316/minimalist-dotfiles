@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-alias mbsync='mbsync -c "${XDG_CONFIG_HOME}/isync/mbsyncrc"' 
+if command -v mbsync > /dev/null 2>&1; then
+   alias mbsync='mbsync -c "${XDG_CONFIG_HOME}/isync/mbsyncrc"' 
+fi

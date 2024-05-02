@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
-alias lz="lazygit"
-alias dotslz="(cd ~/dotfiles ; lazygit)"
+
+if command -v lazygit > /dev/null 2>&1; then
+   alias lz="lazygit"
+   alias dotslz="(cd ~/dotfiles ; lazygit)"
+fi

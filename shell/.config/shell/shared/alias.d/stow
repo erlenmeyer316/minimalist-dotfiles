@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-alias linkdots='(cd ~/dotfiles ; stow .)'
+if command -v stow > /dev/null 2>&1; then
+   alias linkdots='(cd ~/dotfiles ; stow .)'
+fi
