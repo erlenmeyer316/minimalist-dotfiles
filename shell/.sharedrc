@@ -3,31 +3,36 @@
 #
 
 # If not running interactively, don't do anything
-#[[ $- != *i* ]] && return
 
 # Environment Variables
-for file in ~/.config/shell/shared/env.d/* ; do
-   if [ -f "$file" ] ; then
-	echo "$file"
-	source "$file"
-   fi
-done
+if [ -d ~/.config/shell/shared/alias.d ]; then
+   for file in ~/.config/shell/shared/env.d/* ; do
+      if [ -f "$file" ]; then
+	 #echo "Sourcing ${file}"
+         source "$file"
+      fi
+   done
+fi
 
 # Path
-source ~/.config/shell/shared/path
-
-# Aliases
-for file in ~/.config/shell/shared/alias.d/* ; do
-   if [ -f "$file" ] ; then
-	echo "$file"
-	source "$file"
-   fi
-done
+[[ -f ~/.config/shell/shared/path ]] && source ~/.config/shell/shared/path
 
 # Functions
-for file in ~/.config/shell/shared/function.d/* ; do
-   if [ -f "$file" ] ; then
-	echo "$file"
-	source "$file"
-   fi
-done
+if [ -d ~/.config/shell/shared/function.d ]; then
+   for file in ~/.config/shell/shared/function.d/* ; do
+       if [ -f "$file" ]; then
+	 # echo "Sourcing ${file}"
+	   source "$file"
+       fi
+   done
+fi
+
+#Aliases
+if [ -d ~/.config/shell/shared/alias.d ]; then
+   for file in ~/.config/shell/shared/alias.d/* ; do
+      if [ -f "$file" ]; then
+	  #echo "Sourcing ${file}"
+	   source "$file"
+      fi
+   done
+fi

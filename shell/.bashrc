@@ -9,36 +9,35 @@
 [[ -f ~/.sharedrc ]] && . ~/.sharedrc
 
 # Environment Variables
-#if [ -d ~/.config/shell/bash/env.d ]; then
+if [ -d ~/.config/shell/bash/env.d ]; then
    for file in ~/.config/shell/bash/env.d/* ; do
-      if [ -f "$file" ] ; then
-	   echo "$file"
-	   source "$file"
+      if [ -f "$file" ]; then
+	  #echo "Sourcing ${file}"
+          source "$file"
       fi
    done
-#if
+fi
 
 # Path
 [[ -f ~/.config/shell/bash/path ]] && source ~/.config/shell/bash/path
 
-# Aliases
-#if [ -d ~/.config/shell/bash/alias.d ]; then
-   for file in ~/.config/shell/bash/alias.d/* ; do
-      if [ -f "$file" ] ; then
-   	   echo "$file"
-	   source "$file"
-      fi
-   done
-#fi
-
 # Functions
-#if [ -d ~/.config/shell/bash/functions.d ]; then
-   for file in ~/.config/shell/bash/functions.d/* ; do
-      if [ -f "$file" ] ; then
-	   echo "$file"
-	   source "$file"
+if [ -d ~/.config/shell/bash/function.d ]; then
+   for file in ~/.config/shell/bash/function.d/* ; do
+      if [ -f "$file" ]; then
+	  #echo "Sourcing ${file}"
+	  source "$file"
       fi
    done
-#fi
+fi
 
-clear
+# Aliases
+if [ -d ~/.config/shell/bash/alias.d ]; then
+   for file in ~/.config/shell/bash/alias.d/* ; do
+      if [ -f "$file" ]; then
+	  #echo "Sourcing ${file}"
+	  source "$file"
+      fi
+   done
+fi
+
