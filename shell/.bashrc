@@ -2,11 +2,17 @@
 # ~/.bashrc
 #
 
-# If not running interactively, don't do anything
-#[[ $- != *i* ]] && return
+# Settings
+[[ -f ~/.config/shell/bash/.bash_settings ]] && source ~/.config/shell/bash/.bash_settings
+
+#Prompt
+[[ -f ~/.config/shell/bash/.bash_prompt ]] && source ~/.config/shell/bash/.bash_prompt
 
 # Shared configurations
-[[ -f ~/.sharedrc ]] && . ~/.sharedrc
+[[ -f ~/.config/shell/shared/.sharedrc ]] && . ~/.config/shell/shared/.sharedrc
+
+# Path
+[[ -f ~/.config/shell/bash/path ]] && source ~/.config/shell/bash/path
 
 # Environment Variables
 if [ -d ~/.config/shell/bash/env.d ]; then
@@ -17,9 +23,6 @@ if [ -d ~/.config/shell/bash/env.d ]; then
       fi
    done
 fi
-
-# Path
-[[ -f ~/.config/shell/bash/path ]] && source ~/.config/shell/bash/path
 
 # Functions
 if [ -d ~/.config/shell/bash/function.d ]; then

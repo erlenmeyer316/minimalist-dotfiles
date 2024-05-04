@@ -15,7 +15,7 @@ if [ -d ~/.config/shell/shared/alias.d ]; then
 fi
 
 # Path
-[[ -f ~/.config/shell/shared/path ]] && source ~/.config/shell/shared/path
+[[ -f ~/.config/shell/shared/.shared_path ]] && source ~/.config/shell/shared/.shared_path
 
 # Functions
 if [ -d ~/.config/shell/shared/function.d ]; then
