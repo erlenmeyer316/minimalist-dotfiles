@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+
+# yabai sudoers file
+#sudo visudo -f /private/etc/sudoers.d/yabai
+
+function yabai_errors() {
+    cat /tmp/yabai_erlenmeyer316.err.log
+}
+
+function yabai_logs() {
+    cat /tmp/yabai_erlenmeyer316.out.log
+}
+
+function yabaisudoer_config() {
+    echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa"
+}
+
+function yabaisudoer() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: "
+        echo "    $0  <sudoers file path>"
+        echo ""
+        echo "Example: "
+        echo "    $0 \"/etc/suduers.d/yabai\""
+        return 1
+    fi
+
+    local ysc_string=$(yabaisudoer_config)
+
+    if [ -f "$1" ]; then
+        sudo sh -c 'echo "$ysc_string" > "$1"'
+    fi
+}

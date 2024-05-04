@@ -27,14 +27,14 @@
 #fi
 
 # Functions
-#if [ -d ~/.config/shell/bash/function.d ]; then
-#   for file in ~/.config/shell/bash/function.d/* ; do
-#      if [ -f "$file" ]; then
-#	  #echo "Sourcing ${file}"
-#	  source "$file"
-#      fi
-#   done
-#fi
+if [ -d ~/.config/shell/zsh/function.d ]; then
+   for file in ~/.config/shell/zsh/function.d/* ; do
+      if [ -f "$file" ]; then
+	  echo "Sourcing ${file}"
+          source "$file"
+      fi
+   done
+fi
 
 # Aliases
 #if [ -d ~/.config/shell/bash/alias.d ]; then

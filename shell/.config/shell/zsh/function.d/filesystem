@@ -1,0 +1,28 @@
+#!/usr/bin/env zsh
+
+function search() {
+    if [[ -z "$1" ]] || [[ -z "$2" ]]; then
+        echo "Usage: "
+        echo "    $0 <search string> <folder>"
+        echo ""
+        echo "Example: "
+        echo "    $0 \"my_favorite_string\" \"/home/files\""
+        return 1
+    fi
+
+    grep -R "${1}" "${2}"
+}
+
+function backup(){
+    if [[ -z "$1" ]]; then
+        echo "Usage: "
+        echo "    $0 <path>"
+        echo ""
+        echo "Example: "
+        echo "    $0 \"~/.config.nvim\""
+        echo "    $0 \"~/.config/.zshrc\""
+        return 1
+    fi
+
+    mv ${1}{,.bak}
+}
