@@ -5,7 +5,7 @@
 #
 
 # Settings
-#[[ -f ~/.config/shell/bash/.bash_settings ]] && source ~/.config/shell/bash/.bash_settings
+[[ -f ~/.config/shell/zsh/.zsh_settings ]] && . ~/.config/shell/zsh/.zsh_settings
 
 #Prompt
 [[ -f ~/.config/shell/zsh/.zsh_prompt ]] && . ~/.config/shell/zsh/.zsh_prompt
@@ -30,7 +30,7 @@
 if [ -d ~/.config/shell/zsh/function.d ]; then
    for file in ~/.config/shell/zsh/function.d/* ; do
       if [ -f "$file" ]; then
-	  echo "Sourcing ${file}"
+	  #echo "Sourcing ${file}"
           source "$file"
       fi
    done
