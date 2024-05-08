@@ -56,6 +56,7 @@ pipewire-pulse
 powertop
 qutebrowser
 ranger
+ripasso
 ripgrep
 rust
 rxvt-unicode
@@ -70,10 +71,12 @@ tlp-rdw
 tmux
 trash-cli
 ttf-dejavu
+ttf-nerd-fonts-symbols-mono
 unzip
 upower
 vdirsyncer
 w3m
+wezterm
 wget
 wireplumber
 xdg-user-dirs
