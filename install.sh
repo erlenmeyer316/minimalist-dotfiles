@@ -15,16 +15,17 @@ stow_package() {
 
 # base packages  
 base=(
-	shell
-	neofetch
-	ranger
-	tmux
-	w3m
+	bin
 	btop
 	kitty
 	lazygit
-	bin
-	espanso
+	neofetch
+	qutebrowser
+	ranger
+	shell
+	stow
+	tmux
+	w3m
 )
 
 user_only=(
