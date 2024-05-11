@@ -11,4 +11,4 @@ alias home="cd $HOME"
 alias ls='ls -al --color=auto'
 alias grep='grep --color=auto'
 alias mkdir='mkdir -p'
-alias reload='source $HOME/.bash_profile && echo "sourced $HOME/.bash_profile"'
+#alias reload='source $HOME/.bash_profile && echo "sourced $HOME/.bash_profile"'

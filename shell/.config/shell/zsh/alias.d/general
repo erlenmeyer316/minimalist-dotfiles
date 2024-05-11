@@ -1,0 +1,4 @@
+
+#!/usr/bin/env bash
+
+alias reload='source $HOME/.zsh_profile && echo "sourced $HOME/.zsh_profile"'

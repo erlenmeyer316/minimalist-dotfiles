@@ -1,0 +1,4 @@
+
+#!/usr/bin/env bash
+
+alias reload='source $HOME/.bash_profile && echo "sourced $HOME/.bash_profile"'
